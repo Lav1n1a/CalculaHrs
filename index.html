@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <div class="fundo">
+        <div class="calculadora">
+            <h2>Calculadora de Horas</i></h2>
+            <p id="resultado" value="00:00"></p>
+                <table>                 
+                    <tr>
+                        <td><button class="botao" onclick="adicionar('7')">7</button></td>
+                        <td><button class="botao" onclick="adicionar('8')">8</button></td>
+                        <td><button class="botao" onclick="adicionar('9')">9</button></td>
+                        <td><button class="botao" onclick="adicionar('/')">/</button></td>
+                        <td><button class="botao" onclick="limpar()">C</td>
+                    </tr>
+                    <tr>
+                        <td><button class="botao" onclick="adicionar('4')">4</button></td>
+                        <td><button class="botao" onclick="adicionar('5')">5</button></td>
+                        <td><button class="botao" onclick="adicionar('6')">6</button></td>
+                        <td><button class="botao" onclick="adicionar('*')">*</button></td>
+                        <td><button class="botao" onclick="voltar()"><</td>
+                    </tr>
+                    <tr>
+                        <td><button class="botao" onclick="adicionar('1')">1</button></td>
+                        <td><button class="botao" onclick="adicionar('2')">2</button></td>
+                        <td><button class="botao" onclick="adicionar('3')">3</button></td>
+                        <td><button class="botao" onclick="adicionar('-')">-</button></td>
+                        <td rowspan="2"><button class="botao" style="height: 106px;" onclick="calcular()">=</button></td>
+                    </tr>
+                    <tr>
+                        <td><button class="botao" onclick="adicionar('0')">0</button></td>
+                        <td><button class="botao" onclick="adicionar('.')">.</button></td>
+                        <td><button class="botao" onclick="adicionar('%')">%</button></td>
+                        <td><button class="botao" onclick="adicionar('+')">+</button></td>
+                    </tr>
+                    <table>
+                        <hr>
+                        <tr>
+                            <td><button class="botao2">Dias trabalhados</button></td>
+                            <td><button class="botao2">Adicional Noturno</button></td>
+                            <td><button class="botao2">Opções</button></td>
+                        </tr>
+                    </table>
+                    <div>
+                        <hr>
+                        <div class="content-historico"> 
+                            <h3>Histórico</h3>
+                            <button class="exclui-historico"><b>X</b></button>
+                        </div>
+
+                        <p class="resultado-historico">Histórico aqui</p>
+                    </div>
+                    
+                </table>
+        </div>
+    </div>
+    
+</body>
+</html>
