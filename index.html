@@ -12,38 +12,38 @@
         <div class="calculadora">
             <h2>Calculadora de Horas</i></h2>
             <form>
-                <input type="text" id="resultado" placeholder="00:00">
+                <input type="text" id="resultado" placeholder="00:00" value="">
                 <input type="hidden" id="valor1" value="">
-                <input type="hidden" id="valor2" value="">
                 <input type="hidden" id="operacao" value="">
+                <input type="hidden" id="valor2" value="">
             </form>
                 <table>                 
                     <tr>
                         <td><button class="botao" onclick="adicionar('7')">7</button></td>
                         <td><button class="botao" onclick="adicionar('8')">8</button></td>
                         <td><button class="botao" onclick="adicionar('9')">9</button></td>
-                        <td><button class="botao" onclick="adicionar('/')">/</button></td>
+                        <td><button class="botao" onclick="addOperacao('/')">/</button></td>
                         <td><button class="botao" onclick="limpar()">C</td>
                     </tr>
                     <tr>
                         <td><button class="botao" onclick="adicionar('4')">4</button></td>
                         <td><button class="botao" onclick="adicionar('5')">5</button></td>
                         <td><button class="botao" onclick="adicionar('6')">6</button></td>
-                        <td><button class="botao" onclick="adicionar('*')">*</button></td>
+                        <td><button class="botao" onclick="addOperacao('*')">*</button></td>
                         <td><button class="botao" onclick="voltar()"><</td>
                     </tr>
                     <tr>
                         <td><button class="botao" onclick="adicionar('1')">1</button></td>
                         <td><button class="botao" onclick="adicionar('2')">2</button></td>
                         <td><button class="botao" onclick="adicionar('3')">3</button></td>
-                        <td><button class="botao" onclick="adicionar('-')">-</button></td>
+                        <td><button class="botao" onclick="addOperacao('-')">-</button></td>
                         <td rowspan="2"><button class="botao" style="height: 106px;" onclick="calcular()">=</button></td>
                     </tr>
                     <tr>
                         <td><button class="botao" onclick="adicionar('0')">0</button></td>
                         <td><button class="botao" onclick="adicionar('.')">.</button></td>
                         <td><button class="botao" onclick="adicionar('%')">%</button></td>
-                        <td><button class="botao" onclick="adicionar('+')">+</button></td>
+                        <td><button class="botao" onclick="addOperacao('+')">+</button></td>
                     </tr>
                     <table>
                         <hr>
@@ -66,6 +66,5 @@
                 </table>
         </div>
     </div>
-    
 </body>
 </html>
