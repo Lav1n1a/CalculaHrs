@@ -1,6 +1,9 @@
 function adicionar(num) {
-    var numero = document.getElementById('resultado').innerHTML;
-    document.getElementById('resultado').innerHTML = numero + num;
+    var valor1 = document.getElementById('resultado').innerHTML;
+    var valor2 = document.getElementById('resultado').innerHTML;
+    var resultado = document.getElementById('resultado').innerHTML;
+    console.log(num)
+    
 }
 function limpar(){
     var numero = document.getElementById('resultado').innerHTML = " ";
@@ -30,6 +33,25 @@ function calcular(){
             break;
     }
 
+    if(operacao.value == '+' && operacao.value == '-'){
+        var tempo1 = (parseInt(valor1[0]) * 60) + (parseInt(valor1[1]));
+        var tempo2 = (parseInt(valor2[0]) * 60) + (parseInt(valor2[1]));
+    
+        tempofinal = parseInt(tempo1) + parseInt(tempo2);
+        var hours = Math.floor(tempofinal / (60 * 60));
+        var dividorMin = tempofinal % (60 * 60);
+        var minutes = Math.floor(dividorMin * 60);
+        
+        var contador = "";
+    
+        if (hours < 10) { contador = "0" + hours + ":"; } else { contador = hours + ":"; }
+        if (minutes < 10) { contador += "0" + minutes + ":"; } else { contador += minutes + ":"; }
+    
+        return contador;
+    }else if(operacao == '*' && operacao.value == '/'){
+    
+    }
+
 }
 function mask(numero) {
     numero = numero.toString().replace(':', '');
@@ -41,7 +63,3 @@ function mask(numero) {
 
     return numero;
 }
-
-
-
-
