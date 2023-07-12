@@ -1,3 +1,4 @@
+
 function addOperacao(operacao){
     document.getElementById('operacao').value = operacao;
     document.getElementById('operacao').value = operacao;
