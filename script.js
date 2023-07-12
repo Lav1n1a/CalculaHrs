@@ -1,10 +1,21 @@
-function adicionar(num) {
-    var valor1 = document.getElementById('resultado').innerHTML;
-    var valor2 = document.getElementById('resultado').innerHTML;
-    var resultado = document.getElementById('resultado').innerHTML;
-    console.log(num)
+function adicionar(num) { 
+let numero = document.getElementById('resultado');
+
+let primeiroValor = document.getElementById('valor1').value;
+let segundoValor = document.getElementById('valor2').value;
+let operacao = document.getElementById('Operacoes').value;
+
+numero = mask(primeiroValor) + operacao + segundoValor;
+
+if(operacao === '+' || operacao === '-') {
+    valorFormatado = mask(primeiroValor) + operacao + mask(segundoValor + num);
+} else if (operacao === '*' || operacao === '/') {
+    valorFormatado = mask(primeiroValor) + operacao + (segundoValor += num);
+} else {
     
 }
+}
+
 function limpar(){
     var numero = document.getElementById('resultado').innerHTML = " ";
 }
