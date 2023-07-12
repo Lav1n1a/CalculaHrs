@@ -11,7 +11,12 @@
     <div class="fundo">
         <div class="calculadora">
             <h2>Calculadora de Horas</i></h2>
-            <p id="resultado" value="00:00"></p>
+            <form>
+                <input type="text" id="resultado" placeholder="00:00">
+                <input type="hidden" id="valor1" value="">
+                <input type="hidden" id="valor2" value="">
+                <input type="hidden" id="operacao" value="">
+            </form>
                 <table>                 
                     <tr>
                         <td><button class="botao" onclick="adicionar('7')">7</button></td>
