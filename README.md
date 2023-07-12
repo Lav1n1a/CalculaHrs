@@ -1,11 +1,25 @@
 # CalculaHrs
 
-function adicionar(valor1, valor2) {
-    
+function adicionar(num) {
+    let numero = document.getElementById('resultado');
+
+    let primeiroValor = document.getElementById('valor1').value;
+    let segundoValor = document.getElementById('valor2').value;
+    let operacao = document.getElementById('Operacoes').value;
+
+    numero = mask(primeiroValor) + operacao + segundoValor;
+
+    if(operacao === '+' || operacao === '-') {
+        valorFormatado = mask(primeiroValor) + operacao + mask(segundoValor + num);
+    } else if (operacao === '*' || operacao === '/') {
+        valorFormatado = mask(primeiroValor) + operacao + (segundoValor += num);
+    } else {
+        
+    }
 }
 
 function limpar(){
-    var numero = document.getElementById('resultado').innerHTML = " ";
+    let numero = document.getElementById('resultado').innerHTML = " ";
 }
 
 function voltar(){
@@ -34,34 +48,17 @@ function calcular(valor1 , valor2){
             break;
     }
 
-    if(operacao.value == '+' && operacao.value == '-'){
-        var tempo1 = (parseInt(valor1[0]) * 60) + (parseInt(valor1[1]));
-        var tempo2 = (parseInt(valor2[0]) * 60) + (parseInt(valor2[1]));
+     <form>
+                <input type="text" id="resultado" placeholder="00:00">
+                <input type="hidden" id="valor1" value="">
+                <input type="hidden" id="valor2" value="">
+                <input type="hidden" id="operacao" value="">
 
-        tempofinal = parseInt(tempo1) + parseInt(tempo2);
-        var hours = Math.floor(tempofinal / (60 * 60));
-        var dividorMin = tempofinal % (60 * 60);
-        var minutes = Math.floor(dividorMin * 60);
-        
-        var contador = "";
-
-        if (hours < 10) { contador = "0" + hours + ":"; } else { contador = hours + ":"; }
-        if (minutes < 10) { contador += "0" + minutes + ":"; } else { contador += minutes + ":"; }
-
-        return contador;
-    }else if(operacao == '*' && operacao.value == '/'){
-
-    }
-
-}
-
-function mask(numero) {
-    numero = numero.toString().replace(':', '');
-    if (numero.length == 3) {
-        numero = "0" + numero.slice(0, 1) + ":" + numero.slice(-2);
-    } else if (numero.length > 3) {
-        numero = numero.slice(0, numero.length - 2) + ":" + numero.slice(-2);
-    }
-
-    return numero;
-}
+            </form>
+                <table>                 
+                    <tr>
+                        <td><button class="botao" onclick="adicionar('7')">7</button></td>
+                        <td><button class="botao" onclick="adicionar('8')">8</button></td>
+                        <td><button class="botao" onclick="adicionar('9')">9</button></td>
+                        <td><button class="botao" id="Operacoes" onclick="adicionar('/')">/</button></td>
+                        <td><button class="botao" onclick="limpar()">C</td>
