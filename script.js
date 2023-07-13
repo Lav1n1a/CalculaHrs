@@ -1,4 +1,3 @@
-
 function addOperacao(operacao){
     document.getElementById('operacao').value = operacao;
     document.getElementById('operacao').value = operacao;
@@ -21,7 +20,7 @@ function adicionar(num) {
         document.getElementById('valor2').value = mask(segundoValor + num);
 
     } else if (operacao == '*' || operacao == '/') {
-        resultado = mask(primeiroValor) + operacao + (segundoValor += num);
+        resultado = mask(primeiroValor) + operacao + (segundoValor + num);
         
         document.getElementById('valor2').value = segundoValor + num;
     } else {
@@ -44,46 +43,45 @@ function voltar() {
     document.getElementById('resultado').innerHTML = resultado.substring(0, resultado.length - 1);
 }
 
+function convertToTime(minutes) {
+    let hours = Math.floor(minutes / 60);
+    let mins = minutes % 60;
+    let formattedHours = hours < 10 ? '0' + hours : hours;
+    let formattedMinutes = mins < 10 ? '0' + mins : mins;
+    return formattedHours + ':' + formattedMinutes;
+}
+
 function calcular() {
     let primeiroValor = document.getElementById('valor1').value;
     let segundoValor = document.getElementById('valor2').value;
     let operacao = document.getElementById('operacao').value;
+    let historico = document.getElementById('historico');//Variável para acrescentar histórico das operações
 
-    console.log({
-        primeiroValor,
-        segundoValor,
-        operacao
-    });
+    let resultado;
 
-    let array = primeiroValor.split(':');
+    let array1 = primeiroValor.split(':');//Separa os valores através do split, por exemplo 10:20 para 10,20
+    let array2 = segundoValor.split(':');
+    var tempo1 = parseInt(array1[0] * 60) + parseInt(array1[1]);//divide horas para 60 e só repete o minuto
+    var tempo2 = parseInt(array2[0] * 60) + parseInt(array2[1]);
 
-    console.log(array[0]) // horas
-    console.log(array[1]) // minutos
+    if (operacao == '+') {
+        let result = tempo1 + tempo2;
+        resultado = convertToTime(result);
+    } else if (operacao == '-') {
+        let result = tempo1 - tempo2;
+        resultado = convertToTime(result);
+    } else if (operacao == '*') {
+        let result = tempo1 * tempo2;
+        resultado = convertToTime(result);
+    } else if (operacao == '/') {
+        let result = tempo1 / tempo2;
+        resultado = convertToTime(result);
+    } else {
+        resultado = 'Operação inválida';
+    }
 
-
-    // var resultado = document.getElementById('resultado').value;
-    // var op = document.getElementById('resultado').value;
-
-    // switch (op) {
-    //     case '+':
-    //         numero = numero + numero;
-    //         numero.innerHTML = numero;
-    //     case '-':
-    //         numero = numero - numero;
-    //         return numero;
-    //     case '*':
-    //         numero = numero * numero;
-    //         return numero;
-    //     case '/':
-    //         numero = numero / numero;
-    //         return numero;
-    //     default:
-    //         break;
-    // }
-
-    // if (operacao.value == '+' && operacao.value == '-') {
-    //     var tempo1 = (parseInt(valor1[0]) * 60) + (parseInt(valor1[1]));
-    //     var tempo2 = (parseInt(valor2[0]) * 60) + (parseInt(valor2[1]));
+    document.getElementById('resultado').value = resultado;
+}
 
     //     tempofinal = parseInt(tempo1) + parseInt(tempo2);
     //     var hours = Math.floor(tempofinal / (60 * 60));
@@ -94,13 +92,6 @@ function calcular() {
 
     //     if (hours < 10) { contador = "0" + hours + ":"; } else { contador = hours + ":"; }
     //     if (minutes < 10) { contador += "0" + minutes + ":"; } else { contador += minutes + ":"; }
-
-    //     return contador;
-    // } else if (operacao == '*' && operacao.value == '/') {
-
-    // }
-
-}
 
 function mask(numero) {
     numero = numero.toString().replace(':', '');
