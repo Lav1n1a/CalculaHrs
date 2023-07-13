@@ -4,7 +4,7 @@ function addOperacao(operacao){
 
     let valor1 = document.getElementById('valor1').value;
     
-    document.getElementById('resultado').value = valor1 + operacao;
+    document.getElementById('resultado').value = mask(valor1) + operacao;
 }
 
 function adicionar(num) {
@@ -17,7 +17,7 @@ function adicionar(num) {
     if (operacao == '+' || operacao == '-') {
         
         resultado = mask(primeiroValor) + operacao + mask(segundoValor + num);
-        document.getElementById('valor2').value = mask(segundoValor + num);
+        document.getElementById('valor2').value = segundoValor + num
 
     } else if (operacao == '*' || operacao == '/') {
         resultado = mask(primeiroValor) + operacao + (segundoValor + num);
@@ -25,7 +25,7 @@ function adicionar(num) {
         document.getElementById('valor2').value = segundoValor + num;
     } else {
         resultado = mask(primeiroValor + num);
-        document.getElementById('valor1').value = resultado;
+        document.getElementById('valor1').value = primeiroValor + num;
     }
 
     document.getElementById('resultado').value = resultado;
@@ -59,8 +59,8 @@ function calcular() {
 
     let resultado;
 
-    let array1 = primeiroValor.split(':');//Separa os valores através do split, por exemplo 10:20 para 10,20
-    let array2 = segundoValor.split(':');
+    let array1 = mask(primeiroValor).split(':');//Separa os valores através do split, por exemplo 10:20 para 10,20
+    let array2 = mask(segundoValor).split(':');
     var tempo1 = parseInt(array1[0] * 60) + parseInt(array1[1]);//divide horas para 60 e só repete o minuto
     var tempo2 = parseInt(array2[0] * 60) + parseInt(array2[1]);
 
@@ -82,7 +82,6 @@ function calcular() {
 
     document.getElementById('resultado').value = resultado;
 }
-
     //     tempofinal = parseInt(tempo1) + parseInt(tempo2);
     //     var hours = Math.floor(tempofinal / (60 * 60));
     //     var dividorMin = tempofinal % (60 * 60);
@@ -95,7 +94,12 @@ function calcular() {
 
 function mask(numero) {
     numero = numero.toString().replace(':', '');
-    if (numero.length == 3) {
+    debugger
+    if(numero.length == 1){
+        numero = "00:0" + numero;
+    }else if(numero.length == 2){
+        numero = "00:" + numero.slice(0, 2);
+    } else if (numero.length == 3) {
         numero = "0" + numero.slice(0, 1) + ":" + numero.slice(-2);
     } else if (numero.length > 3) {
         numero = numero.slice(0, numero.length - 2) + ":" + numero.slice(-2);
