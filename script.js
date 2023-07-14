@@ -64,6 +64,7 @@ function calcular() {
     let segundoValor = document.getElementById('valor2').value;
     let operacao = document.getElementById('operacao').value;
     let historico = document.getElementById('list');//Variável para acrescentar histórico das operações
+    let itensHistorico = document.createElement('li');
 
     let resultado;
 
@@ -91,6 +92,9 @@ function calcular() {
     document.getElementById('resultado').value = resultado;
     let texto = `${mask(primeiroValor)} + ${mask(segundoValor)} = ${resultado}`;
     historico.textContent = texto;
+    
+    itensHistorico.textContent = `${mask(primeiroValor)} + ${mask(segundoValor)} = ${resultado}`;
+    historico.appendChild(itensHistorico);
 }
 
 function mask(numero) {
