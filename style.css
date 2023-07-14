@@ -81,3 +81,10 @@
         background-color: white;
         color: #159C8C;;
     }
+  #list{
+        margin-top: 10px;
+    }
+    li {
+        text-decoration: none;
+        list-style: none;
+    }
