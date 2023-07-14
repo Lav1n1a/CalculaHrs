@@ -36,6 +36,7 @@ function limpar() {
     document.getElementById('valor1').value = null;
     document.getElementById('valor2').value = null;
     document.getElementById('operacao').value = null;
+    document.getElementById('lista').value = null;
 }
 
 function voltar() {
@@ -50,12 +51,19 @@ function convertToTime(minutes) {
     let formattedMinutes = mins < 10 ? '0' + mins : mins;
     return formattedHours + ':' + formattedMinutes;
 }
+function listaHitorico(valorHistorico){
+    let ul = document.getElementById('list');
+    let li = document.getElementById('li');
+    li.appendChild(document.textContent = valorHistorico);
+    ul.appendChild(li);
+
+}
 
 function calcular() {
     let primeiroValor = document.getElementById('valor1').value;
     let segundoValor = document.getElementById('valor2').value;
     let operacao = document.getElementById('operacao').value;
-    let historico = document.getElementById('historico');//Variável para acrescentar histórico das operações
+    let historico = document.getElementById('list');//Variável para acrescentar histórico das operações
 
     let resultado;
 
@@ -81,16 +89,9 @@ function calcular() {
     }
 
     document.getElementById('resultado').value = resultado;
+    let texto = `${mask(primeiroValor)} + ${mask(segundoValor)} = ${resultado}`;
+    historico.textContent = texto;
 }
-    //     tempofinal = parseInt(tempo1) + parseInt(tempo2);
-    //     var hours = Math.floor(tempofinal / (60 * 60));
-    //     var dividorMin = tempofinal % (60 * 60);
-    //     var minutes = Math.floor(dividorMin * 60);
-
-    //     var contador = "";
-
-    //     if (hours < 10) { contador = "0" + hours + ":"; } else { contador = hours + ":"; }
-    //     if (minutes < 10) { contador += "0" + minutes + ":"; } else { contador += minutes + ":"; }
 
 function mask(numero) {
     numero = numero.toString().replace(':', '');
@@ -107,3 +108,4 @@ function mask(numero) {
 
     return numero;
 }
+
