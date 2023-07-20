@@ -36,12 +36,16 @@ function limpar() {
     document.getElementById('valor1').value = null;
     document.getElementById('valor2').value = null;
     document.getElementById('operacao').value = null;
-    document.getElementById('lista').value = null;
 }
 
 function voltar() {
     var resultado = document.getElementById('resultado').innerHTML;
     document.getElementById('resultado').innerHTML = resultado.substring(0, resultado.length - 1);
+}
+
+function apagarHistorico() {
+    let his = document.getElementById('list');
+    his.innerHTML = null;
 }
 
 function convertToTime(minutes) {
@@ -51,15 +55,12 @@ function convertToTime(minutes) {
     let formattedMinutes = mins < 10 ? '0' + mins : mins;
     return formattedHours + ':' + formattedMinutes;
 }
-function listaHitorico(){
-    let his = document.getElementById('list');
-    his.innerHTML = null;
-}
 
 function calcular() {
     let primeiroValor = document.getElementById('valor1').value;
     let segundoValor = document.getElementById('valor2').value;
     let operacao = document.getElementById('operacao').value;
+    
     let historico = document.getElementById('list');//Variável para acrescentar histórico das operações
     let itensHistorico = document.createElement('li');
 
@@ -87,16 +88,17 @@ function calcular() {
     }
 
     document.getElementById('resultado').value = resultado;
-    let texto = `${mask(primeiroValor)} + ${mask(segundoValor)} = ${resultado}`;
-    historico.textContent = texto;
+
+    //itensHistorico.classList.add('hist-resultado');
     
     itensHistorico.textContent = `${mask(primeiroValor)} + ${mask(segundoValor)} = ${resultado}`;
     historico.appendChild(itensHistorico);
+
+
 }
 
 function mask(numero) {
     numero = numero.toString().replace(':', '');
-    debugger
     if(numero.length == 1){
         numero = "00:0" + numero;
     }else if(numero.length == 2){
@@ -110,3 +112,16 @@ function mask(numero) {
     return numero;
 }
 
+function diasTrabalhados(){
+    let horasLista = document.getElementById('list').innerHTML;
+
+    let filhos = horasLista.children;
+    let separarValores = filhos.split('=');
+    let valoreSeparados = parseInt(separarValores[1] / 24);
+    console.log(valoreSeparados);
+
+    let mostrarDiasFormatado = parseInt(separarValores[0]) + ":" + valoreSeparados;
+
+    document.getElementById('list').innerHTML = mostrarDiasFormatado;
+
+}
