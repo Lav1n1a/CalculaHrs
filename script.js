@@ -51,12 +51,9 @@ function convertToTime(minutes) {
     let formattedMinutes = mins < 10 ? '0' + mins : mins;
     return formattedHours + ':' + formattedMinutes;
 }
-function listaHitorico(valorHistorico){
-    let ul = document.getElementById('list');
-    let li = document.getElementById('li');
-    li.appendChild(document.textContent = valorHistorico);
-    ul.appendChild(li);
-
+function listaHitorico(){
+    let his = document.getElementById('list');
+    his.innerHTML = null;
 }
 
 function calcular() {
