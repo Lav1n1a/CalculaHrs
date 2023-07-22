@@ -1,47 +1,94 @@
-function adicionar(num) {
-    var numero = document.getElementById('resultado').innerHTML;
-    document.getElementById('resultado').innerHTML = numero + num;
-}
-function limpar(){
-    var numero = document.getElementById('resultado').innerHTML = " ";
-}
-function voltar(){
-    var resultado = document.getElementById('resultado').innerHTML;
-    document.getElementById('resultado').innerHTML = resultado.substring(0, resultado.length -1);
-}
-function calcular(){
-    var numero = document.getElementById('resultado').value;
-    var op = document.getElementById('resultado').value;
-
-    switch (op) {
-        case '+':
-            numero = numero + numero;
-            numero.innerHTML = numero;
-        case '-':
-            numero = numero - numero;
-            return numero;
-        case '*':
-            numero = numero * numero;
-            return numero;
-        case '/':
-            numero = numero / numero;
-            return numero;
-        default:
-            break;
+*{
+    margin: 0;
+    padding: 0;
+    } 
+    
+    .fundo{
+    background-color: #046E60;
+    height: 100vh;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    .calculadora{
+    position: absolute;
+    background-color:#159C8C;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 15px;
+    padding: 15px;
+    }
+    
+    .botao{
+    width: 50px;
+    height: 50px;
+    font-size: 25px;
+    cursor: pointer;
+    margin: 3px;
+    background-color: rgb(31, 31, 31);
+    border: none;
+    color: white;
+    }
+    
+    hr {
+        margin: 5px;
+    }
+    
+    .botao2 {
+        background-color: #136961a6;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        width: 85px;
+        height: 80px;
+        margin: 10px 5px;
+        padding: 5px;
+        font-size: 14px;
+        cursor: pointer;
+    }
+    
+    .botao:hover{
+    background-color: black;
+    }
+    
+    #resultado{
+    width: 272px;
+    background-color: white;
+    height: 30px;
+    margin: 5px;
+    font-size: 25px;
+    color: black;
+    text-align: right;
+    padding: 5px;
+    }
+    .rodape-historico {
+        margin: 10px;
     }
 
-}
-function mask(numero) {
-    numero = numero.toString().replace(':', '');
-    if (numero.length == 3) {
-        numero = "0" + numero.slice(0, 1) + ":" + numero.slice(-2);
-    } else if (numero.length > 3) {
-        numero = numero.slice(0, numero.length - 2) + ":" + numero.slice(-2);
+    .content-historico {
+        display: flex;
+        justify-content: space-between;
     }
-
-    return numero;
-}
-
-
-
+    
+    .exclui-historico {
+        background-color: #159C8C;
+        border: none;
+        padding: 5px;
+        width: 30px;
+        color: white;
+        font-size: 15px;
+        cursor: pointer;
+    }
+    .exclui-historico:hover {
+        background-color: white;
+        color: #159C8C;;
+    }
+    #list{
+        margin-top: 10px;
+    }
+    li {
+        text-decoration: none;
+        list-style: none;
+    }
 
