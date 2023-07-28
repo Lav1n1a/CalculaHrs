@@ -144,5 +144,3 @@ function mask(numero) {
     document.getElementById('list').innerHTML = mostrarDiasFormatado;
 
 }*/
-
-
