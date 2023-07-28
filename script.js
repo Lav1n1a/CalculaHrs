@@ -79,12 +79,14 @@ function calcular() {
         resultado = convertToTime(result);
     } else if (operacao == '*') {
         let result = tempo1 * tempo2;
-        resultado = convertToTime(Math.trunc(result));
+        resultado = convertToTime(Math.trunc(result));// A função Match.trunch retorna o valor inteiro dos numeros quebrados, mas sem arredondar
     } else if (operacao == '/') {
         let result = tempo1 / tempo2;
         resultado = convertToTime(Math.trunc(result));
-    } else if(operacao == '%'){
-        
+    } else if(operacao == '%'){//A operacão % apresenta a quantidade de porcentagem em relação à um valor de horas usando a fórmula regra de 3. Se adicionarmos 01:30 % 2, o valor em horas desse 2% seria 00:00. 
+        let result = (tempo2/ 100) * tempo1;// Converte o tempo2 para decimal e multiplica pela Hora(tempo1)
+        let resultHrs = result/ 60; // converte o valor de minutos para horas 
+        resultado = convertToTime(Math.trunc(resultHrs));
     }
     else {
         resultado = 'Operação inválida';
@@ -142,6 +144,5 @@ function mask(numero) {
     document.getElementById('list').innerHTML = mostrarDiasFormatado;
 
 }*/
-
 
 
