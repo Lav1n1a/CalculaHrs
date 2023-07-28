@@ -87,13 +87,14 @@ function calcular() {
         resultado = 'Operação inválida';
     }
 
-    document.getElementById('resultado').value = resultado;
+    //document.getElementById('resultado').value = resultado;
 
     //itensHistorico.classList.add('hist-resultado');
     
     itensHistorico.textContent = `${mask(primeiroValor)} + ${mask(segundoValor)} = ${resultado}`;
     historico.appendChild(itensHistorico);
 
+    limpar()
 
 }
 
