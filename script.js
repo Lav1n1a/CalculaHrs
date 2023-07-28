@@ -1,9 +1,9 @@
-function addOperacao(operacao){
+function addOperacao(operacao) {
     document.getElementById('operacao').value = operacao;
     document.getElementById('operacao').value = operacao;
 
     let valor1 = document.getElementById('valor1').value;
-    
+
     document.getElementById('resultado').value = mask(valor1) + operacao;
 }
 
@@ -15,13 +15,13 @@ function adicionar(num) {
     let operacao = document.getElementById('operacao').value;
 
     if (operacao == '+' || operacao == '-') {
-        
+
         resultado = mask(primeiroValor) + operacao + mask(segundoValor + num);
         document.getElementById('valor2').value = segundoValor + num
 
-    } else if (operacao == '*' || operacao == '/') {
+    } else if (operacao == '*' || operacao == '/' || operacao == '%') {
         resultado = mask(primeiroValor) + operacao + (segundoValor + num);
-        
+
         document.getElementById('valor2').value = segundoValor + num;
     } else {
         resultado = mask(primeiroValor + num);
@@ -60,11 +60,11 @@ function calcular() {
     let primeiroValor = document.getElementById('valor1').value;
     let segundoValor = document.getElementById('valor2').value;
     let operacao = document.getElementById('operacao').value;
-    
+
+
     let historico = document.getElementById('list');//Variável para acrescentar histórico das operações
     let itensHistorico = document.createElement('li');
 
-    let resultado;
 
     let array1 = mask(primeiroValor).split(':');//Separa os valores através do split, por exemplo 10:20 para 10,20
     let array2 = mask(segundoValor).split(':');
@@ -79,30 +79,46 @@ function calcular() {
         resultado = convertToTime(result);
     } else if (operacao == '*') {
         let result = tempo1 * tempo2;
-        resultado = convertToTime(result);
+        resultado = convertToTime(Math.trunc(result));
     } else if (operacao == '/') {
         let result = tempo1 / tempo2;
-        resultado = convertToTime(result);
-    } else {
+        resultado = convertToTime(Math.trunc(result));
+    } else if(operacao == '%'){
+        
+    }
+    else {
         resultado = 'Operação inválida';
     }
 
-    //document.getElementById('resultado').value = resultado;
-
+    if (operacao === '*' || operacao === '/' || operacao === '%') {
+        itensHistorico.textContent = `${mask(primeiroValor)} ${operacao} ${segundoValor} = ${resultado}`;
+        historico.appendChild(itensHistorico);
+    } else {
+        itensHistorico.textContent = `${mask(primeiroValor)} ${operacao} ${mask(segundoValor)} = ${resultado}`;
+        historico.appendChild(itensHistorico);
+    }
     //itensHistorico.classList.add('hist-resultado');
-    
-    itensHistorico.textContent = `${mask(primeiroValor)} ${operacao} ${mask(segundoValor)} = ${resultado}`;
-    historico.appendChild(itensHistorico);
 
-    limpar()
+   /*itensHistorico.textContent = `${mask(primeiroValor)} ${operacao} ${mask(segundoValor)} = ${resultado}`;
+   historico.appendChild(itensHistorico);*/
+   limpar()
+
+}
+
+
+function comecarNovoCalculo(resultado) {
+    const resultadoSalvo = resultado;
+    limpar();
+    document.getElementById('resultado').value = mask(resultadoSalvo);
+    document.getElementById('valor1').value = resultadoSalvo;
 
 }
 
 function mask(numero) {
     numero = numero.toString().replace(':', '');
-    if(numero.length == 1){
+    if (numero.length == 1) {
         numero = "00:0" + numero;
-    }else if(numero.length == 2){
+    } else if (numero.length == 2) {
         numero = "00:" + numero.slice(0, 2);
     } else if (numero.length == 3) {
         numero = "0" + numero.slice(0, 1) + ":" + numero.slice(-2);
@@ -113,7 +129,7 @@ function mask(numero) {
     return numero;
 }
 
-function diasTrabalhados(){
+/*function diasTrabalhados(){
     let horasLista = document.getElementById('list').innerHTML;
 
     let filhos = horasLista.children;
@@ -125,6 +141,7 @@ function diasTrabalhados(){
 
     document.getElementById('list').innerHTML = mostrarDiasFormatado;
 
-}
+}*/
+
 
 
