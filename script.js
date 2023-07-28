@@ -91,7 +91,7 @@ function calcular() {
 
     //itensHistorico.classList.add('hist-resultado');
     
-    itensHistorico.textContent = `${mask(primeiroValor)} + ${mask(segundoValor)} = ${resultado}`;
+    itensHistorico.textContent = `${mask(primeiroValor)} ${operacao} ${mask(segundoValor)} = ${resultado}`;
     historico.appendChild(itensHistorico);
 
     limpar()
