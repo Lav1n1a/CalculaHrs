@@ -16,6 +16,7 @@
                 <input type="hidden" id="valor1" value="">
                 <input type="hidden" id="operacao" value="">
                 <input type="hidden" id="valor2" value="">
+                <input type="hidden" id="resultadoValor" value="">
             </form>
                 <table>                 
                     <tr>
@@ -48,19 +49,21 @@
                     <table>
                         <hr>
                         <tr>
-                            <td><button class="botao2">Dias trabalhados</button></td>
+                            <td><button class="botao2" onclick="diasTrabalhados()">Dias trabalhados</button></td>
                             <td><button class="botao2">Adicional Noturno</button></td>
                             <td><button class="botao2">Opções</button></td>
                         </tr>
                     </table>
-                    <div>
+                    <div class="rodape-calculadora">
                         <div class="content-historico"> 
                             <h3 id="historico">Histórico</h3>
-                            <button class="exclui-historico"><b>X</b></button>
+                            <button class="exclui-historico" onclick="apagarHistorico()"><b>X</b></button>
                         </div>
-                        <ul id="list">
+                        <div class="list-historico">
+                            <ul id="list">
 
-                        </ul>
+                            </ul>
+                        </div>
                     </div>
                     
                 </table>
