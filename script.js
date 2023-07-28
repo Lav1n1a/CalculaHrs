@@ -93,8 +93,6 @@ function calcular() {
     
     itensHistorico.textContent = `${mask(primeiroValor)} + ${mask(segundoValor)} = ${resultado}`;
     historico.appendChild(itensHistorico);
-
-
 }
 
 function mask(numero) {
@@ -113,15 +111,33 @@ function mask(numero) {
 }
 
 function diasTrabalhados(){
-    let horasLista = document.getElementById('list').innerHTML;
+    let resultadoValor = document.getElementById('resultadoValor').innerHTML;
 
-    let filhos = horasLista.children;
-    let separarValores = filhos.split('=');
-    let valoreSeparados = parseInt(separarValores[1] / 24);
-    console.log(valoreSeparados);
+    
+    /*const horaspordia = "08:00";
 
-    let mostrarDiasFormatado = parseInt(separarValores[0]) + ":" + valoreSeparados;
 
-    document.getElementById('list').innerHTML = mostrarDiasFormatado;
+     hora = hora.split(':');//Separa os valores através do split, por exemplo 10:20 para 10,20
+     horaspordia = horaspordia.split(':');
+
+     minutos = (hora[0] *60) + hora[1]
+     minutospordia = (horaspordia[0] *60) + horaspordia[1]
+
+    resultado = minutos / minutospordia
+
+    console.log(resultado)*/
 
 }
+
+
+// document.onload = () => {
+//     console.log('carregando..');
+
+//     document.getElementById('diasTraba').addEventListener('click', function diasTrabalhados() {
+//         // itensHistorico.textContent = `${resultado * 24} + dias trabalhados`;
+//         // historico.appendChild(itensHistorico);
+
+//         console.log('teste..')
+//     })
+// }
+
